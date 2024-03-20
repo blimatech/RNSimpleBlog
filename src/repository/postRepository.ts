@@ -1,5 +1,5 @@
 import posts from "../content";
-export const getAllPosts = async () => {
+export const getAllPosts = () => {
   return Object.values(posts);
 };
 
