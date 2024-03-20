@@ -2,7 +2,14 @@ import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView, Text } from "react-native";
 import Markdown from "react-native-markdown-display";
-import { getPost } from "../repository/postRepository";
+import { getAllPosts, getPost } from "../repository/postRepository";
+
+export async function generateStaticParams(): Promise<
+  Record<string, string>[]
+> {
+  const posts = getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
 const PostDetailsPage = () => {
   const { slug } = useLocalSearchParams();
